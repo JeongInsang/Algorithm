@@ -1,4 +1,4 @@
-def solution(n):
+def dp(n):
     if n == 1:
         return 1
     elif n == 2:
@@ -6,9 +6,11 @@ def solution(n):
     elif n == 3:
         return 4
     else:
-        return solution(n-1) + solution(n-2) + solution(n-3)
+        return dp(n-1) + dp(n-2) + dp(n-3)
 
 n = int(input())
+
 for i in range(n):
     num = int(input())
-    print(solution(num))
+    print(dp(num))
+    
