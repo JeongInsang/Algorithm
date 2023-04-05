@@ -1,20 +1,13 @@
-arr = [i for i in range(1, 10000)]
+arr = set(range(1, 10000))
+new = set()
 
-for i in range(1,10000):
-    if i < 10:
-        new = i + (i % 10)
+for num in arr:
+    for n in str(num):
+        num += int(n)
+    new.add(num)
 
-    if i < 100:
-        new = i + (i % 10) + (i // 10)
+answer = arr - new
+for i in sorted(answer):
+    print(i)
 
-    if i < 1000:
-        new = i + (i // 100) + ((i % 100) // 10) + ((i % 100) % 10)
 
-    if i < 10000:
-        new = i + (i // 1000) + ((i % 1000) // 100) + (((i % 1000) % 100) // 10) + (((i % 1000) % 100) % 10)
-
-    if new in arr:
-        arr.remove(new)
-
-for j in arr:
-    print(j)
