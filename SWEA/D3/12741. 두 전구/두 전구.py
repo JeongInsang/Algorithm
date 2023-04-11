@@ -1,5 +1,3 @@
-# SW Expert Academy D3 체스판 위의 룩 배치(보류)
-
 t = int(input())
 answer = []
 for tc in range(1, t + 1):
