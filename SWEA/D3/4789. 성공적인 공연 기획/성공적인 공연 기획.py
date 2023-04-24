@@ -10,8 +10,8 @@ for tc in range(1, t+1):
         else:
             while clap < i:
                 answer += 1
-                arr[i-1] += 1
-                clap += arr[i-1]
+                # arr[i-1] += 1
+                clap += 1
             clap += arr[i]
 
     print(f'#{tc} {answer}')
