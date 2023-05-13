@@ -1,10 +1,11 @@
-def prime(n):
+n = 1000000
+arr = [False, False] + [True] * 999998
 
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0:
-            return False
-    return n
+for i in range(2, int(n**0.5)+1):
+    if arr[i]:
+        for j in range(i + i, n, i):
+            arr[j] = False
 
-for i in range(2, 1000000):
-    if prime(i):
-        print(prime(i), end = ' ')
+for idx, val in enumerate(arr):
+    if val:
+        print(idx, end=' ')
