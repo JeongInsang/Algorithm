@@ -16,14 +16,11 @@ public class Solution {
 			}
 			
 			for(int b = 2; b < n - 2; b++) {
-				int l1 = arr[b-2];
-				int l2 = arr[b-1];
-				if (l1 < arr[b] && l2 < arr[b]) {
-					int maxLeft = Math.max(l1, l2);
-					int r1 = arr[b+2];
-					int r2 = arr[b+1];
-					if (r1 < arr[b] && r2 < arr[b]) {
-						int maxRight = Math.max(r1, r2);
+				if (arr[b-2] < arr[b] && arr[b-1] < arr[b]) {
+					int maxLeft = Math.max(arr[b-2], arr[b-1]);
+					
+					if (arr[b+2] < arr[b] && arr[b+1] < arr[b]) {
+						int maxRight = Math.max(arr[b+1], arr[b+2]);
 						int maxHight = Math.max(maxLeft, maxRight);
 						answer += arr[b] - maxHight;
 					}
