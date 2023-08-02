@@ -26,8 +26,10 @@ public class Main {
 			}
 			else {
 				if(i + l >= n) {
-					arr[l-(n-i)]++;  // 3
-					i = l-(n-i);
+//					arr[l-(n-i)]++;
+//					i = l-(n-i);
+					arr[l-n+i]++;
+					i = l-n+i;
 				}
 				else {
 					arr[i+l]++;
