@@ -8,7 +8,7 @@ public class Solution {
 	static int[] dc = {0, 0, -1, 1};
 	
 	static Queue<int[]> q = new LinkedList<int[]>();
-	static ArrayList<Integer> minNum = new ArrayList<Integer>();
+	static ArrayList<Integer> nums = new ArrayList<Integer>();
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -30,15 +30,15 @@ public class Solution {
 					bfs();
 				}
 			}
-			Collections.sort(minNum);
-			System.out.println("#" + tc + " " + minNum.get(0) + " " + (answer+1));
-			minNum.clear();
+			Collections.sort(nums);
+			System.out.println("#" + tc + " " + nums.get(0) + " " + (answer+1));
+			nums.clear();
 		}
 	}
 	
 	private static void bfs() {
 		int move = 0;
-		int tempMin = q.peek()[2];
+		int num = q.peek()[2];
 		
 		while(!q.isEmpty()) {
 			int temp[] = q.poll();
@@ -56,9 +56,9 @@ public class Solution {
 		}
 		
 		if(answer <= move) {
-			if(move > answer) minNum.clear();
+			if(move > answer) nums.clear();
 			answer = move;
-			minNum.add(tempMin);
+			nums.add(num);
 		}
 	}
 
