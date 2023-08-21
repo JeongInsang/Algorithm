@@ -22,25 +22,17 @@ public class Main {
 				System.out.println(temp[1]);
 				break;
 			}
-			for (int i = 0; i < 3; i++) {
-				if(i == 0) {
-					if(temp[0]*2 < visited.length && !visited[temp[0]*2]) {
-						q.offer(new int[] {temp[0]*2, temp[1]+1});
-						visited[temp[0]*2] = true;
-					}
-				}
-				else if (i == 1) {
-					if(temp[0]+1 < visited.length && !visited[temp[0]+1]) {
-						q.offer(new int[] {temp[0]+1, temp[1]+1});
-						visited[temp[0]+1] = true;
-					}
-				}
-				else {
-					if(temp[0] -1 >= 0 && !visited[temp[0]-1]) {
-						q.offer(new int[] {temp[0]-1, temp[1]+1});
-						visited[temp[0]-1] = true;
-					}
-				}
+			if(temp[0]*2 < visited.length && !visited[temp[0]*2]) {
+				q.offer(new int[] {temp[0]*2, temp[1]+1});
+				visited[temp[0]*2] = true;
+			}
+			if(temp[0]+1 < visited.length && !visited[temp[0]+1]) {
+				q.offer(new int[] {temp[0]+1, temp[1]+1});
+				visited[temp[0]+1] = true;
+			}
+			if(temp[0] -1 >= 0 && !visited[temp[0]-1]) {
+				q.offer(new int[] {temp[0]-1, temp[1]+1});
+				visited[temp[0]-1] = true;
 			}
 		}
 	}
