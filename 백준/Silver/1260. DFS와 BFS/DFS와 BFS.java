@@ -1,52 +1,58 @@
-import java.util.ArrayDeque;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-	static int n, m, v;
-	static int[][] graph;
-	static boolean[] visitedBFS, visitedDFS;
-	static Queue<Integer> q = new ArrayDeque<Integer>();
+	static int N, M, V;
+	static int[][] arr;
+	static boolean[] visitedDFS, visitedBFS;
+	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		n = sc.nextInt();
-		m = sc.nextInt();
-		v = sc.nextInt();
-		graph = new int[n+1][n+1];
-		visitedBFS = new boolean[n+1];
-		visitedDFS = new boolean[n+1];
+		N = sc.nextInt();
+		M = sc.nextInt();
+		V = sc.nextInt();
 		
-		for (int i = 0; i < m; i++) {
-			int node1 = sc.nextInt();
-			int node2 = sc.nextInt();
-			
-			graph[node1][node2] = 1;
-			graph[node2][node1] = 1;
+		// 인접행렬 사용 DFS, BFS
+		arr = new int[N+1][N+1];
+		visitedDFS = new boolean[N+1];
+		visitedBFS = new boolean[N+1];
+		
+		for (int i = 0; i < M; i++) {
+			int from = sc.nextInt();
+			int to = sc.nextInt();
+			arr[from][to] = 1;
+			arr[to][from] = 1;
 		}
 		
-		dfs(v);
+		dfs(V);
 		System.out.println();
-		bfs(v);
-	}
-	private static void dfs(int v) {
-		visitedDFS[v] = true;
+		bfs(V);
 		
-		System.out.print(v + " ");
-		for (int i = 1; i <= n; i++) {
-			if(graph[v][i] == 1 && !visitedDFS[i]) dfs(i);
-		}
 	}
+
 	private static void bfs(int v) {
+		Queue<Integer> q = new ArrayDeque<Integer>();
 		q.offer(v);
 		visitedBFS[v] = true;
+		
 		while(!q.isEmpty()) {
-			int cur = q.poll();
-			System.out.print(cur + " ");
-			for (int i = 1; i <= n; i++) {
-				if(graph[cur][i] == 1 && !visitedBFS[i]) {
+			int temp = q.poll();
+			System.out.print(temp + " ");
+			for (int i = 1; i <= N; i++) {
+				if (arr[temp][i] == 1 && !visitedBFS[i]) {
 					q.offer(i);
 					visitedBFS[i] = true;
 				}
+			}
+		}
+	}
+
+	private static void dfs(int v) {
+		visitedDFS[v] = true;
+		System.out.print(v + " ");
+		
+		for (int i = 1; i <= N; i++) {
+			if(arr[v][i] == 1 && !visitedDFS[i]) {
+				dfs(i);
 			}
 		}
 	}
