@@ -2,20 +2,21 @@ import java.util.*;
 
 public class Main {
 	static int l, c;
+	static char[] password, sel;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		l = sc.nextInt();
 		c = sc.nextInt();
-		char[] password = new char[c];
-		char[] sel = new char[l];
+		password = new char[c];
+		sel = new char[l];
 		
 		for (int i = 0; i < c; i++) {
 			password[i] = sc.next().charAt(0);
 		}
 		Arrays.sort(password);
-		recursive(password, sel, 0, 0);
+		recursive(0, 0);
 	}
-	private static void recursive(char[] password, char[] sel, int idx, int k) {
+	private static void recursive(int idx, int k) {
 		if (k == sel.length) {
 			int cnt = 0;
 			for (int i = 0; i < sel.length; i++) {
@@ -34,7 +35,7 @@ public class Main {
 		
 		for (int i = idx; i < password.length; i++) {
 			sel[k] = password[i];
-			recursive(password, sel, i+1, k+1);
+			recursive(i+1, k+1);
 		}
 	}
 
