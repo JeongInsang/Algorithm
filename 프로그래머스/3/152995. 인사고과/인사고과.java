@@ -15,16 +15,15 @@ class Solution {
         // scores 배열 요소의 합을 기준으로 내림차순 정렬
         Arrays.sort(scores, (o1, o2) -> Integer.compare(o2[0] + o2[1], o1[0] + o1[1]));
     
-        
-        int score = Integer.MAX_VALUE;
+        int maxScore = scores[0][0] + scores[0][1];  
         int rank = 1;  // 완호의 석차
         int cur = 0;  // 현재 배열의 인덱스
         
         for(int[] s : scores){
-            if(s[0] == wanho[0] && s[1] == wanho[1]) break;  // 현재 배열이 완호의 점수면 break
+            if(s[0] == wanho[0] && s[1] == wanho[1]) return rank;  // 현재 배열이 완호의 점수면 return
             
-            if(score >= s[0] + s[1]){
-                score = s[0] + s[1];
+            if(maxScore >= s[0] + s[1]){  
+                maxScore = s[0] + s[1];  // 다음으로 큰 점수로 갱신
                 rank++;
                 
                 for(int i = 0; i < cur; i++){  // 현재 배열의 인덱스 -1 까지만 scores 배열 순회
